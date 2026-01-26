@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./TodoList.css";
+import NewTodoForm from "./NewTodoForm";
+import TodoCard from "./TodoCard";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -44,64 +46,14 @@ const TodoList = () => {
       {/* Top part */}
       <div className="todo-container">
         <h1 className="title">My Todo List</h1>
-        {/* Input field to enter a new heading */}
-        <div className="input-container">
-          <input
-            type="text"
-            className="heading-input"
-            placeholder="Enter heading"
-            value={headingInput}
-            onChange={(e) => {
-              setHeadingInput(e.target.value);
-            }}
-          />
-          {/* Button to add the entered heading to the todo list */}
-          <button className="add-list-button" onClick={handleAddTodo}>
-            Add Heading
-          </button>
-        </div>
+        <NewTodoForm headingInput={headingInput} setHeadingInput={setHeadingInput} handleAddTodo={handleAddTodo} handleDeleteTodo={handleDeleteTodo}/>
       </div>
 
       {/* Botton part */}
       <div className="todo_main">
         {/* Iterate over todo array and display each todo */}
         {todos.map((todo, index) => (
-          <div key={index} className="todo-card">
-            <div className="heading_todo">
-              <h3>{todo.heading}</h3>
-              <button
-                className="delete-button-heading"
-                onClick={handleDeleteTodo}
-              >
-                Delete Heading
-              </button>
-            </div>
-            <ul>
-              {/* Iterate over each list item inside the current todo */}
-              {todo.lists.map((list, listIndex) => (
-                <li key={listIndex} className="todo_inside_list">
-                  {/* Display the text content of the list item */}
-                  <p>{list}</p>
-                </li>
-              ))}
-            </ul>
-            <div className="add_list">
-              {/* Input field for adding a new item under a specific heading */}
-              <input
-                type="text"
-                className="list-input"
-                placeholder="Add List"
-                value={listInputs[index] || ""}
-                onChange={(e) => handleListInputChange(index, e.target.value)}
-              />
-              <button
-                className="add-list-button"
-                onClick={() => handleAddList(index)}
-              >
-                add List
-              </button>
-            </div>
-          </div>
+          <TodoCard key={index} index={index} todo={todo} handleListInputChange={handleListInputChange} handleAddList={handleAddList} listInputs={listInputs} />
         ))}
       </div>
     </>
