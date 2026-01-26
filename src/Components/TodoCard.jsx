@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TodoCard({index, todo, handleListInputChange, handleAddList, handleDeleteTodo}, listInputs) {
+export default function TodoCard({index, todo, handleListInputChange, handleAddList, handleDeleteTodo, listInputs}) {
   return (
     <div index={index} className="todo-card">
       <div className="heading_todo">
