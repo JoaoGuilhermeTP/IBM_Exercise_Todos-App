@@ -5,14 +5,14 @@ export default function TodoCard({index, todo, handleListInputChange, handleAddL
     <div index={index} className="todo-card">
       <div className="heading_todo">
         <h3>{todo.heading}</h3>
-        <button className="delete-button-heading" onClick={handleDeleteTodo}>
+        <button className="delete-button-heading" onClick={() => handleDeleteTodo(index)}>
           Delete Heading
         </button>
       </div>
       <ul>
         {/* Iterate over each list item inside the current todo */}
         {todo.lists.map((list, listindex) => (
-          <li index={listindex} className="todo_inside_list">
+          <li key={listindex} className="todo_inside_list">
             {/* Display the text content of the list item */}
             <p>{list}</p>
           </li>

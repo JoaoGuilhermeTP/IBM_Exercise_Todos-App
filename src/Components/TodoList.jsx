@@ -53,7 +53,7 @@ const TodoList = () => {
       <div className="todo_main">
         {/* Iterate over todo array and display each todo */}
         {todos.map((todo, index) => (
-          <TodoCard key={index} index={index} todo={todo} handleListInputChange={handleListInputChange} handleAddList={handleAddList} listInputs={listInputs} />
+          <TodoCard key={index} index={index} todo={todo} handleListInputChange={handleListInputChange} handleAddList={handleAddList} listInputs={listInputs} handleDeleteTodo={handleDeleteTodo} />
         ))}
       </div>
     </>
